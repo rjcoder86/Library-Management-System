@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate
-from rest_framework import status, generics
+from rest_framework import status, generics, serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import User
@@ -16,7 +16,7 @@ class Registration(generics.GenericAPIView):
         if serializer.is_valid():
             serializer.save()
             return Response({ 'msg': 'Registeration is Done ! Please Login'}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors)
+        return Response({'msg':'Email already exist '},status=status.HTTP_404_NOT_FOUND)
 
 
 class Login(generics.GenericAPIView,APIView):
@@ -33,7 +33,7 @@ class Login(generics.GenericAPIView,APIView):
       print(user)
       if user is None:
         return Response({'msg':'Oops ! You are not registered yet'},status=status.HTTP_404_NOT_FOUND)
-      return Response({'msg':'Login Successfully'}, status=status.HTTP_200_OK)
+      return Response({'msg':'Login Successfully','is_admin':user.is_admin}, status=status.HTTP_200_OK)
 
 
 

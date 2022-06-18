@@ -14,7 +14,18 @@
 - Can View all books
 ---
 
-## HOW TO RUN THIS PROJECT
+
+
+## API Development
+
+- API deveoped in Python, Django Rest Framework by using class based and function based view methods
+
+- API are authorized by custum permission classes for admin and student roles
+## Database Details
+
+- Database used: MySQL 
+## How to Run This Project
+
 - Install Python(3.7.6)
 - Create mysql database and add details in settings.py file
 - Open Terminal and Execute Following Commands :
@@ -33,24 +44,42 @@ py manage.py runserver
 ```
 http://127.0.0.1:8000/
 ```
-
-
 ## API References
 
-
-- Login and Register APIs
+User related APIs
+- Login API
+Login based on email and password
 ```
 http://127.0.0.1:8000/accounts/login/
-http://127.0.0.1:8000/accounts/register/
 ```
-Authorized APIs for Role Base Access
-- CRUD APIs
+- Resgister API
+Account details First Name , Last Name, Email, Password and User Type
+
 ```
-http://127.0.0.1:8000/api/addbook/
+http://127.0.0.1:8000/accounts/login/
+```
+Authorized APIs for Role Base Access for CRUD Operation
+- View All Books
+Admin and Student both can view all books
+```
 http://127.0.0.1:8000/api/allbooks/
+```
+- Create new book entry
+Only admin can add new book, with details  like book name, book author , book type and book is issued or not
+```
+http://127.0.0.1:8000/api/allbooks/
+```
+- Edit Book details
+Admin can edit book details on basis of id of object
+```
 http://127.0.0.1:8000/api/editbook/id/
+```
+- Delete Book
+Only admin can delete book 
+```
 http://127.0.0.1:8000/api/deletebook/id/
 
 ```
 ## Drawbacks / LoopHoles
-- Anyone can be Admin.
+- Anyone can be Admin while signup
+( we can manage this by giving admin to chnange user data in admin panel or through Django Admin panel )
