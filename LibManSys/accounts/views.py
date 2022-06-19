@@ -1,4 +1,3 @@
-from django.contrib.auth import authenticate
 from rest_framework import status, generics, serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -29,11 +28,14 @@ class Login(generics.GenericAPIView,APIView):
       serializer.is_valid(raise_exception=True)
       email = serializer.data.get('email')
       password = serializer.data.get('password')
-      user = authenticate(email=email, password=password)
-      print(user)
+      if not User.objects.filter(email=email).count():
+        return Response({'msg': 'Oops ! You are not registered yet'}, status=status.HTTP_404_NOT_FOUND)
+      try:
+        user=User.objects.get(email=email,password=password)
+      except:
+          user=None
       if user is None:
-        return Response({'msg':'Oops ! You are not registered yet'},status=status.HTTP_404_NOT_FOUND)
-      return Response({'msg':'Login Successfully','is_admin':user.is_admin}, status=status.HTTP_200_OK)
-
+          return Response({'msg': 'Email or password is incorrect'}, status=status.HTTP_404_NOT_FOUND)
+      return Response({'msg': 'Login Successfully', 'is_admin': user.is_admin}, status=status.HTTP_200_OK)
 
 

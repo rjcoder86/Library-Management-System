@@ -1,0 +1,35 @@
+.admin-container{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.book-form{
+    width: 40%;
+
+}
+.book-table{
+    width: 60%;
+}
+.admin-form , .table{
+width: 90%;
+}
+.table{
+    border: 1px solid #dddd;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+thead tr {
+    background: #3f51b5;
+    color: #fff;
+    text-align: left;
+  }
+  
+  th,
+  td {
+    padding: 1em;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+  }

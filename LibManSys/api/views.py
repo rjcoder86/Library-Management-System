@@ -7,7 +7,7 @@ from .permissions import IsAdminUser ,AllowAll ,AllowAny
 
 
 #Function Based Views
-@permission_classes([IsAdminUser,])
+# @permission_classes([IsAdminUser,])
 @api_view(['POST'])
 def AddBook(request):
     s=BookSerializer(data=request.data)
@@ -15,14 +15,14 @@ def AddBook(request):
     s.save()
     return Response(s.data, status=status.HTTP_201_CREATED)
 
-@permission_classes([AllowAny,])
+# @permission_classes([AllowAny,])
 @api_view(['GET'])
 def AllBooks(request):
     books = Book.objects.all()
     seridata=BookSerializer(books,many=True)
     return Response(seridata.data, status=status.HTTP_200_OK)
 
-@permission_classes([IsAdminUser,])
+# @permission_classes([IsAdminUser,])
 @api_view(['POST','GET'])
 def UpdateBook(request, pk):
     b=Book.objects.get(id=pk)
@@ -35,7 +35,7 @@ def UpdateBook(request, pk):
     bs = BookSerializer(b)
     return Response(bs.data)
 
-@permission_classes([IsAdminUser,])
+# @permission_classes([IsAdminUser,])
 @api_view(['GET'])
 def DeleteBook(request, pk):
     b=Book.objects.get(id=pk)

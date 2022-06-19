@@ -80,6 +80,21 @@ Only admin can delete book
 http://127.0.0.1:8000/api/deletebook/id/
 
 ```
+
+## User Interference
+- Login Page
+![ Login ](LibManSys/static/login.png)
+
+- Signup Page
+![ Signin ](LibManSys/static/signup.png)
+
+- Admin View
+
+![ Admin ](LibManSys/static/admin.png)
+
+- Student View
+![ Student ](LibManSys/static/student.png)
+
 ## Drawbacks / LoopHoles
 - Anyone can be Admin while signup
 ( we can manage this by giving admin to chnange user data in admin panel or through Django Admin panel )
