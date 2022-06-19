@@ -1,0 +1,66 @@
+<div class="admin-container">
+  <div class="book-form">
+    <form class="form admin-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <h1>Add New Book</h1>
+      <div class="form-group">
+        <label for="book-name">Book Name</label><br />
+        <input type="text" id="book-name" name="book" required ngModel />
+      </div>
+
+      <div class="form-group">
+        <label for="book-author">Book Author</label><br />
+        <input type="text" id="book-author" name="author" required ngModel />
+      </div>
+
+      <div class="form-group">
+        <label for="book-type">Book Type</label><br />
+        <input
+          type="text"
+          id="book-type"
+          name="book_type"
+          required
+          ngModel
+          email
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="is-issued">Is Issued</label><br />
+        <select name="is_issued" id="is-issued" [ngModel]="default">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="book-table">
+    <h1>All Books</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Book</th>
+          <th>Author</th>
+          <th>Book Type</th>
+          <th>Is Issued</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.id }}</td>
+          <td>{{ book.book }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.book_type }}</td>
+          <td>{{ book.is_issued }}</td>
+          <td>
+            <button style="margin-right: 1rem">edit</button>
+            <button (click)="deleteBook(book.id)">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

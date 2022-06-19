@@ -1,0 +1,39 @@
+<div class="container">
+  <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <h1>Signup</h1>
+    <div class="form-group">
+      <label for="firstname">First Name</label><br />
+      <input type="text" id="firstname" name="firstname" required ngModel />
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Last Name</label><br />
+      <input type="text" id="lastname" name="lastname" required ngModel />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label><br />
+      <input type="email" id="email" name="email" required ngModel email />
+    </div>
+    <div>
+      <label for="isadmin">Is Admin</label><br />
+      <input
+        type="checkbox"
+        id="isadmin"
+        name="isadmin"
+        required
+        [ngModel]="isAdmin"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label><br />
+      <input type="password" id="password" name="password" required ngModel />
+    </div>
+
+    <p>
+      Already a memeber?
+      <a routerLink="/login">login here</a>
+    </p>
+    <button type="submit">Signup</button>
+  </form>
+</div>
