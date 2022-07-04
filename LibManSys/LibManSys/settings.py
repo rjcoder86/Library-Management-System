@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import rest_framework
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -76,14 +78,14 @@ AUTH_USER_MODEL = 'accounts.User'
 
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-    # ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'api.permissions.IsAdminUser',
-    #     'api.permissions.AllowAll',
-    #     'api.permissions.AllowAny',
-    # )
+#     # 'DEFAULT_AUTHENTICATION_CLASSES': (
+#     #     'rest_framework.authentication.BasicAuthentication',
+#     # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'api.permissions.IsUser',
+        'api.permissions.IsAdminUser',
+        'api.permissions.AllowAll',
+    )
 }
 
 WSGI_APPLICATION = 'LibManSys.wsgi.application'

@@ -13,7 +13,6 @@ export class StudentPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe((res: any) => {
-      console.log(res);
       this.books = res;
     });
   }

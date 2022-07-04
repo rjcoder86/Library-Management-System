@@ -9,6 +9,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
       'password':{'write_only':True}
     }
 
+    # def save(self, commit=True):
+    #   # Save the provided password in hashed format
+    #   user = super().save(commit=False)
+    #   user.set_password(self.data["password"])
+    #   user.save()
+    #   return user
+
+    def create(self, validate_data):
+      return User.objects.create_user(**validate_data)
+
 
 class LoginSerializer(serializers.ModelSerializer):
   email = serializers.EmailField(max_length=255)

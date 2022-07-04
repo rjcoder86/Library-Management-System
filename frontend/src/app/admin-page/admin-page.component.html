@@ -57,8 +57,10 @@
           <td>{{ book.book_type }}</td>
           <td>{{ book.is_issued }}</td>
           <td>
-            <button style="margin-right: 1rem">edit</button>
-            <button (click)="deleteBook(book.id)">delete</button>
+            <div style="display: flex">
+              <button style="margin-right: 1rem">Update</button>
+              <button (click)="deleteBook(book.id)">Delete</button>
+            </div>
           </td>
         </tr>
       </tbody>

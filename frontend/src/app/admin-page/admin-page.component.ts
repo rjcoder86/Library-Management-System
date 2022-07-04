@@ -27,7 +27,6 @@ export class AdminPageComponent implements OnInit {
     };
 
     this.bookService.addBook(data).subscribe((response: any) => {
-      console.log(response);
       form.reset();
       this.ngOnInit();
     });
@@ -37,4 +36,18 @@ export class AdminPageComponent implements OnInit {
       this.ngOnInit();
     });
   }
+  // editBook(book: any) {
+  //   const data = {
+  //     id: book.id,
+  //     book: book.book,
+  //     author: book.author,
+  //     book_type: book.book_type,
+  //     is_issues: book.is_issued,
+  //   };
+
+  //   this.bookService.editBook(data).subscribe((response: any) => {
+  //     console.log(response);
+  //     this.ngOnInit();
+  //   });
+  // }
 }
